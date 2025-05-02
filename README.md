@@ -45,14 +45,16 @@ You can verify it's working by accessing http://localhost:3002/home in your brow
 To use this server from an MCP client (such as Semantic Kernel or compatible applications):
 
 1. Connect to the MCP server using an MCP client by adding the following json to the `mcp.json` file:
-```{
+```
+{
     "servers": {        
         "pokeapi-mcp-server": {
             "type": "sse",
             "url": "http://localhost:3002/sse"
         }
     }
-}```
+}
+```
 
 2. Use the exposed tools to interact with the Pokémon functionalities
 
