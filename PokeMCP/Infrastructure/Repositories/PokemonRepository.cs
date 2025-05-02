@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PokeMCP.Application.DTOs;
+using PokeMCP.Core.Entities;
 using PokeMCP.Core.Enums;
 using PokeMCP.Core.Interfaces;
 using PokeMCP.Infrastructure.Clients;
@@ -17,8 +18,25 @@ public class PokemonRepository : IPokemonRepository
 
     public async Task<string> GetPokemonByIdOrName(string identifier)
     {
-        var response = await _apiClient.GetResourceAsync<PokeApiPokemonResponse>($"pokemon/{identifier.ToLower()}");
-        return JsonConvert.SerializeObject(response);
+        var response = await _apiClient.GetResourceAsync<PokemonApiResponse>($"pokemon/{identifier.ToLower()}");
+
+        // Mapear la respuesta API al modelo de dominio
+        var pokemon = new Pokemon
+        {
+            Id = response.Id,
+            Name = response.Name,
+            Height = response.Height,
+            Weight = response.Weight,
+            Types = response.Types.Select(t => new PokemonType { Name = t.Type.Name }).ToList(),
+            Stats = response.Stats.Select(s => new Stat
+            {
+                Name = s.Stat.Name,
+                BaseValue = s.BaseStat
+            }).ToList(),
+            Sprites = new Sprite { FrontDefault = response.Sprites.FrontDefault }
+        };
+
+        return JsonConvert.SerializeObject(pokemon);
     }
 
     public async Task<TypeEffectiveness> GetTypeEffectiveness(string attackType, string defendType)

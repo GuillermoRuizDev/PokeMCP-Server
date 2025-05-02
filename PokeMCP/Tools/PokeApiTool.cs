@@ -11,8 +11,8 @@ public class PokeApiTool
     {
         _pokemonRepository = pokemonRepository;
     }
-    [McpServerTool, Description("Fetches Pokemon data by ID or name.")]
-    public async Task<string> GetPokemonInfo(string pokemonName)
+    [McpServerTool, Description("Gets Pokemon data by ID or name.")]
+    public async Task<string> GetPokemonInformation([Description("name or id of the pokemon")] string pokemonName)
     {
         return await _pokemonRepository.GetPokemonByIdOrName(pokemonName);
     }
