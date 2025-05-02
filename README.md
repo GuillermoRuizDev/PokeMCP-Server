@@ -75,7 +75,7 @@ PokeMCP/
 ```
 
 
-## API Usage
+## MCP Server Usage
 
 The server exposes the following functionalities through the MCP protocol:
 
