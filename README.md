@@ -45,7 +45,7 @@ You can verify it's working by accessing http://localhost:3002/home in your brow
 To use this server from an MCP client (such as Semantic Kernel or compatible applications):
 
 1. Connect to the MCP server using an MCP client by adding the following json to the `mcp.json` file:
-```
+```json
 {
     "servers": {        
         "pokeapi-mcp-server": {
@@ -62,15 +62,15 @@ To use this server from an MCP client (such as Semantic Kernel or compatible app
 ```
 PokeMCP/
 ├── Core/                      # Domain Layer
-│   ├── Entities/            # Domain entities
-│   ├── Enums/             # Enumerations
-│   └── Interfaces/        # Repository and service interfaces
-├── Application/           # Application Layer
-│   ├── DTOs/                # Data transfer objects
-│   └── UseCases/         # Use cases and business logic implementation
-├── Infrastructure/        # Infrastructure Layer
-│   ├── Clients/             # External service clients (PokeAPI)
-│   └── Repositories/    # Repository implementations
+│   ├── Entities/              # Domain entities
+│   ├── Enums/                 # Enumerations
+│   └── Interfaces/            # Repository and service interfaces
+├── Application/               # Application Layer
+│   ├── DTOs/                  # Data transfer objects
+│   └── UseCases/              # Use cases and business logic implementation
+├── Infrastructure/            # Infrastructure Layer
+│   ├── Clients/               # External service clients (PokeAPI)
+│   └── Repositories/          # Repository implementations
 └── Tools/                     # MCP tools for exposing functionality
 ```
 
